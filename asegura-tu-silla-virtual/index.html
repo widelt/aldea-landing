@@ -9,6 +9,24 @@
 <meta property="og:description" content="Reserva tu silla virtual para el estreno. 8 de junio.">
 <meta property="og:image" content="https://campuslaetiquette.com/poster.jpg">
 
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1251616755300595');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1251616755300595&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -173,15 +191,29 @@
     font-style: italic;
   }
 
+  /* CTA heading — "Asegura tu silla virtual" */
+  .cta-heading {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(38px, 4.5vw, 62px);
+    line-height: 1;
+    letter-spacing: 0.03em;
+    color: var(--blanco);
+    max-width: 420px;
+    margin-bottom: 14px;
+    animation: fadeUp 0.9s ease forwards;
+    opacity: 0;
+    animation-delay: 0.68s;
+  }
+
   .hook-sub {
     font-size: 13px;
     color: var(--gris-medio);
     line-height: 1.7;
     max-width: 380px;
-    margin-bottom: 48px;
+    margin-bottom: 36px;
     animation: fadeUp 0.9s ease forwards;
     opacity: 0;
-    animation-delay: 0.7s;
+    animation-delay: 0.78s;
   }
 
   /* FORM */
@@ -664,17 +696,25 @@
       <strong>¿Qué pasaría si el saber estar desapareciera</strong> de un día para otro?
     </p>
 
+    <h2 class="cta-heading">Asegura tu<br>silla virtual.</h2>
+
     <p class="hook-sub">
-      Asegura tu silla virtual y sé de las primeras en ver la miniserie que nadie esperaba de La Etiquette. Recibirás acceso directo el día del estreno.
+      Sé de las primeras en ver la miniserie que nadie esperaba de La Etiquette. Recibirás acceso directo el día del estreno.
     </p>
 
     <div class="form-wrapper">
       <label class="form-label" for="email-hero">Tu correo electrónico</label>
-      <form class="form-row" id="form-hero" action="https://campuslaetiquette.com/confirma-tu-silla-virtual" method="POST" onsubmit="handleSubmit(event, 'form-hero')">
+      <form
+        class="form-row"
+        id="form-hero"
+        action="https://app.mailingboss.com/lists/6a1231d7c1a55/subscribe"
+        method="POST"
+        onsubmit="handleSubmit(event, 'form-hero')"
+      >
         <input
           type="email"
           id="email-hero"
-          name="email"
+          name="EMAIL"
           placeholder="tucorreo@gmail.com"
           required
           autocomplete="email"
@@ -750,10 +790,16 @@
   <p class="second-cta-sub reveal">Solo necesitas tu correo. Nada más.</p>
 
   <div class="second-form reveal">
-    <form class="form-row" id="form-bottom" action="https://campuslaetiquette.com/confirma-tu-silla-virtual" method="POST" onsubmit="handleSubmit(event, 'form-bottom')">
+    <form
+      class="form-row"
+      id="form-bottom"
+      action="https://app.mailingboss.com/lists/6a1231d7c1a55/subscribe"
+      method="POST"
+      onsubmit="handleSubmit(event, 'form-bottom')"
+    >
       <input
         type="email"
-        name="email"
+        name="EMAIL"
         placeholder="tucorreo@gmail.com"
         required
         autocomplete="email"
@@ -815,28 +861,14 @@
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
   // ============ FORM HANDLING ============
+  // Solo feedback visual — el redirect lo maneja MailingBoss desde su dashboard
   function handleSubmit(e, formId) {
-    e.preventDefault();
     const form = document.getElementById(formId);
     const btn  = form.querySelector('button');
-    const orig = btn.textContent;
-
-    btn.textContent = 'GUARDANDO...';
+    btn.textContent = 'RESERVANDO...';
     btn.disabled = true;
-
-    const email = form.querySelector('input[type="email"]').value;
-
-    // Fire-and-forget tracking (replace with your actual endpoint)
-    fetch('/api/subscribe', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, source: formId, page: 'silla-virtual' })
-    }).catch(() => {});
-
-    // Redirect after short delay for UX
-    setTimeout(() => {
-      window.location.href = 'https://campuslaetiquette.com/confirma-tu-silla-virtual?email=' + encodeURIComponent(email);
-    }, 600);
+    btn.style.opacity = '0.8';
+    // El formulario continúa su envío normal a MailingBoss
   }
 </script>
 
