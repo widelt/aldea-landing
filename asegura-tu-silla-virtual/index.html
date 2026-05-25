@@ -298,6 +298,65 @@ src="https://www.facebook.com/tr?id=1251616755300595&ev=PageView&noscript=1"
     font-size: 9px;
   }
 
+  /* ============ HERO FORM STRIP ============ */
+  .hero-form-strip {
+    background: linear-gradient(180deg, rgba(10,10,10,0.96) 0%, rgba(18,18,18,0.98) 100%);
+    border-top: 1px solid rgba(200,16,46,0.22);
+    border-bottom: 1px solid rgba(200,16,46,0.16);
+    padding: 34px 40px 40px;
+    position: relative;
+    z-index: 3;
+  }
+
+  .hero-form-strip-inner {
+    max-width: 1360px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(280px, 0.9fr) minmax(540px, 1.35fr);
+    gap: 32px;
+    align-items: end;
+  }
+
+  .hero-form-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hero-form-kicker {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rojo);
+  }
+
+  .hero-form-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(28px, 3vw, 42px);
+    line-height: 0.95;
+    letter-spacing: 0.01em;
+    color: var(--marfil);
+    text-transform: uppercase;
+    max-width: 14ch;
+  }
+
+  .hero-form-sub {
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(245,240,235,0.72);
+    max-width: 48ch;
+  }
+
+  .form-wrapper--strip {
+    margin-top: 0;
+    width: 100%;
+    padding: 0;
+    background: none;
+    border: 0;
+    box-shadow: none;
+  }
+
   /* ============ COUNTDOWN ============ */
   .countdown-section {
     background: var(--gris);
@@ -610,6 +669,20 @@ src="https://www.facebook.com/tr?id=1251616755300595&ev=PageView&noscript=1"
 }
   /* ============ RESPONSIVE ============ */
   @media (max-width: 900px) {
+    .hero-form-strip {
+      padding: 28px 24px 32px;
+    }
+
+    .hero-form-strip-inner {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .hero-form-title {
+      max-width: 100%;
+    }
+
     .hero {
       grid-template-columns: 1fr;
       min-height: auto;
@@ -821,7 +894,7 @@ src="https://www.facebook.com/tr?id=1251616755300595&ev=PageView&noscript=1"
   <div class="hero-content">
 
     <!-- SCENE IMAGE WITH PLAY BUTTON — anchors to form below -->
-    <a href="#form-hero" class="scene-play-wrapper" aria-label="Ver tráiler — regístrate para acceder">
+    <a href="#form-hero" class="scene-play-wrapper" id="trailer-trigger" aria-label="Ver tráiler — regístrate para acceder">
       <div class="scene-overlay"></div>
       <div class="play-btn" aria-hidden="true">
         <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -839,8 +912,20 @@ src="https://www.facebook.com/tr?id=1251616755300595&ev=PageView&noscript=1"
       </div>
     </a>
 
-    <!-- FORM -->
-    <div class="form-wrapper" id="form-anchor">
+  </div>
+
+</section>
+
+<!-- ============ HERO FORM STRIP ============ -->
+<section class="hero-form-strip reveal" aria-labelledby="form-strip-heading">
+  <div class="hero-form-strip-inner">
+    <div class="hero-form-copy">
+      <p class="hero-form-kicker">Reserva tu acceso</p>
+      <h2 class="hero-form-title" id="form-strip-heading">Ingresa tu correo para ver el tráiler y asegurar tu silla virtual</h2>
+      <p class="hero-form-sub">Te enviaremos el acceso directo el día del estreno. Sin pasos extra.</p>
+    </div>
+
+    <div class="form-wrapper form-wrapper--strip" id="form-anchor">
       <label class="form-label" for="email-hero">Tu correo electrónico</label>
       <form
         class="form-row"
@@ -864,9 +949,7 @@ src="https://www.facebook.com/tr?id=1251616755300595&ev=PageView&noscript=1"
       </form>
       <p class="form-note">Tu privacidad es sagrada. Sin spam, nunca.</p>
     </div>
-
   </div>
-
 </section>
 
 <!-- ============ COUNTDOWN ============ -->
@@ -998,6 +1081,25 @@ src="https://www.facebook.com/tr?id=1251616755300595&ev=PageView&noscript=1"
   }, { threshold: 0.15 });
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ============ TRAILER TO FORM FOCUS ============
+  const trailerTrigger = document.getElementById('trailer-trigger');
+  const heroForm = document.getElementById('form-hero');
+  const heroEmail = document.getElementById('email-hero');
+
+  if (trailerTrigger && heroForm && heroEmail) {
+    trailerTrigger.addEventListener('click', function (e) {
+      e.preventDefault();
+      heroForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      const focusEmail = () => {
+        heroEmail.focus({ preventScroll: true });
+        heroEmail.select();
+      };
+
+      window.setTimeout(focusEmail, 450);
+    });
+  }
 
   // ============ FORM HANDLING ============
   // Solo feedback visual — el redirect lo maneja MailingBoss desde su dashboard
