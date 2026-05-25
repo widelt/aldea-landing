@@ -110,10 +110,11 @@ src="https://www.facebook.com/tr?id=1251616755300595&ev=PageView&noscript=1"
     grid-column: 2;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 60px 60px 60px 40px;
+    justify-content: flex-start;
+    padding: 0;
     position: relative;
     z-index: 3;
+    overflow: hidden;
   }
 
   .badge {
@@ -645,6 +646,143 @@ src="https://www.facebook.com/tr?id=1251616755300595&ev=PageView&noscript=1"
     .form-row button { width: 100%; padding: 16px; }
     .countdown-number { font-size: 48px; }
   }
+
+  /* ============ SCENE PLAY PANEL ============ */
+  .scene-play-wrapper {
+    display: block;
+    position: relative;
+    width: 100%;
+    flex: 1;
+    min-height: 320px;
+    overflow: hidden;
+    cursor: pointer;
+    text-decoration: none;
+    background: var(--negro);
+    /* Cinematic placeholder gradient until image is replaced */
+    background-image: linear-gradient(
+      135deg,
+      #1a0a0a 0%,
+      #0d0d0d 30%,
+      #1c0808 60%,
+      #0a0a0a 100%
+    );
+    background-size: cover;
+    background-position: center;
+  }
+
+  /* REPLACE THIS background-image with the real scene image URL:
+     .scene-play-wrapper { background-image: url('assets/scene-trailer.jpg'); } */
+
+  .scene-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(10,10,10,0.25) 0%,
+      rgba(10,10,10,0.55) 60%,
+      rgba(10,10,10,0.85) 100%
+    );
+    z-index: 1;
+  }
+
+  .play-btn {
+    position: absolute;
+    top: 38%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    width: 80px;
+    height: 80px;
+    transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), opacity 0.25s;
+    opacity: 0.92;
+  }
+
+  .scene-play-wrapper:hover .play-btn {
+    transform: translate(-50%, -50%) scale(1.12);
+    opacity: 1;
+  }
+
+  .scene-play-wrapper:hover .scene-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(10,10,10,0.15) 0%,
+      rgba(10,10,10,0.45) 60%,
+      rgba(10,10,10,0.8) 100%
+    );
+  }
+
+  .scene-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 28px 32px 24px;
+    z-index: 2;
+  }
+
+  .scene-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(26px, 3vw, 42px);
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+  }
+
+  .scene-sub {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(12px, 1.2vw, 15px);
+    color: rgba(255,255,255,0.85);
+    line-height: 1.55;
+    margin-bottom: 14px;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+  }
+
+  .scene-cta-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--rojo);
+    font-weight: 500;
+    animation: bounceDown 1.8s ease-in-out infinite;
+  }
+
+  @keyframes bounceDown {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(4px); }
+  }
+
+  /* Adjust form-wrapper inside the new hero-content */
+  .hero-content .form-wrapper {
+    padding: 20px 32px 32px;
+    max-width: 100%;
+    animation: none;
+    opacity: 1;
+  }
+
+  /* ============ RESPONSIVE SCENE PANEL ============ */
+  @media (max-width: 900px) {
+    .scene-play-wrapper {
+      min-height: 260px;
+    }
+    .scene-text {
+      padding: 20px 24px 18px;
+    }
+    .play-btn {
+      width: 64px;
+      height: 64px;
+    }
+    .hero-content .form-wrapper {
+      padding: 16px 24px 28px;
+    }
+  }
 </style>
 </head>
 
@@ -680,29 +818,28 @@ src="https://www.facebook.com/tr?id=1251616755300595&ev=PageView&noscript=1"
   </div>
 
   <div class="hero-content">
-    <span class="badge">Una miniserie de La Etiquette</span>
 
-    <h1 class="hero-title" id="hero-heading">
-      El Día<br>que la<br>Etiqueta<br>Murió
-    </h1>
+    <!-- SCENE IMAGE WITH PLAY BUTTON — anchors to form below -->
+    <a href="#form-hero" class="scene-play-wrapper" aria-label="Ver tráiler — regístrate para acceder">
+      <div class="scene-overlay"></div>
+      <div class="play-btn" aria-hidden="true">
+        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="40" cy="40" r="38" stroke="white" stroke-width="2" fill="rgba(0,0,0,0.45)"/>
+          <polygon points="32,22 60,40 32,58" fill="white"/>
+        </svg>
+      </div>
+      <div class="scene-text">
+        <h1 class="scene-title" id="hero-heading">¿Qué pasaría si un día<br>la etiqueta dejara<br>de existir?</h1>
+        <p class="scene-sub">Regístrate para ver el tráiler y reservar<br>tu silla virtual para el estreno.</p>
+        <span class="scene-cta-hint">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          Ingresa tu correo abajo
+        </span>
+      </div>
+    </a>
 
-    <p class="hero-subtitle">
-      Cuando el saber estar dejó de importar…<br>todo lo demás también.
-    </p>
-
-    <div class="divider"></div>
-
-    <p class="hook-text">
-      <strong>¿Qué pasaría si el saber estar desapareciera</strong> de un día para otro?
-    </p>
-
-    <h2 class="cta-heading">Asegura tu<br>silla virtual.</h2>
-
-    <p class="hook-sub">
-      Sé de las primeras en ver la miniserie que nadie esperaba de La Etiquette. Recibirás acceso directo el día del estreno.
-    </p>
-
-    <div class="form-wrapper">
+    <!-- FORM -->
+    <div class="form-wrapper" id="form-anchor">
       <label class="form-label" for="email-hero">Tu correo electrónico</label>
       <form
         class="form-row"
@@ -726,6 +863,7 @@ src="https://www.facebook.com/tr?id=1251616755300595&ev=PageView&noscript=1"
       </form>
       <p class="form-note">Tu privacidad es sagrada. Sin spam, nunca.</p>
     </div>
+
   </div>
 
 </section>
