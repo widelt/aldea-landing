@@ -9,6 +9,25 @@
 <!-- No indexar esta página -->
 <meta name="robots" content="noindex, nofollow">
 
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1251616755300595');
+fbq('track', 'PageView');
+fbq('trackCustom', 'RegistroConfirmadoEstreno');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1251616755300595&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -603,7 +622,7 @@
       </p>
 
       <a
-        href="https://chat.whatsapp.com/REEMPLAZA-CON-TU-LINK"
+        href="https://wppg.builderall.com/campaign/ada9-cdc6/invite"
         target="_blank"
         rel="noopener noreferrer"
         class="wa-btn"
@@ -661,29 +680,16 @@
   <h2 class="trailer-title" id="trailer-heading">Mira el Tráiler Oficial</h2>
   <p class="trailer-sub">Una miniserie de La Etiquette · Estreno 8 de junio</p>
 
-  <div class="video-wrapper" role="region" aria-label="Reproductor del tráiler">
-    <!--
-      INSTRUCCIONES:
-      Reemplaza el src del iframe con el link de YouTube del tráiler.
-      Ejemplo: src="https://www.youtube.com/embed/TU_VIDEO_ID?autoplay=0&rel=0&modestbranding=1"
-      Cuando no tengas el link, el placeholder de abajo se muestra automáticamente.
-    -->
-    <div class="video-placeholder" id="video-placeholder" aria-label="Tráiler próximamente disponible">
-      <div class="video-placeholder-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-      </div>
-      <p>TRÁILER PRÓXIMAMENTE</p>
-    </div>
-    <!-- Descomentar cuando tengas el video:
+  <div class="video-wrapper" role="region" aria-label="Tráiler oficial de la miniserie">
     <iframe
-      id="trailer-iframe"
-      src="https://www.youtube.com/embed/TU_VIDEO_ID?rel=0&modestbranding=1"
-      title="Tráiler oficial — El Día que la Etiqueta Murió"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      src="https://videomng.builderall.com/embed/5cjGT2pwgp/?autoplay=1&countdown=1&controls=1&allowpause=1"
+      width="100%"
+      height="100%"
+      frameborder="0"
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen
-      loading="lazy"
+      title="Tráiler oficial — El Día que la Etiqueta Murió"
     ></iframe>
-    -->
   </div>
 </section>
 
@@ -723,42 +729,9 @@
     const params = new URLSearchParams(window.location.search);
     const email  = params.get('email');
     if (email) {
-      // Opcional: personalizar título con nombre de dominio
-      const domain = email.split('@')[1];
       console.log('Lead confirmado:', email);
-      // Aquí puedes disparar pixel de conversión, GTM, etc.
     }
   })();
-
-  // ============ FIRE CONVERSION EVENTS ============
-  // Descomentar y reemplazar con tus IDs reales:
-
-  // Meta Pixel
-  // fbq('track', 'Lead', { content_name: 'silla-virtual-etiqueta' });
-
-  // Google Analytics
-  // gtag('event', 'conversion', { send_to: 'AW-XXXXXXXXX/XXXX' });
-
-  // ============ LAZY TRAILER ACTIVATION ============
-  // Cuando tengas el video ID de YouTube, activa esto:
-  function activateTrailer(youtubeId) {
-    const placeholder = document.getElementById('video-placeholder');
-    const wrapper = placeholder.parentElement;
-    if (youtubeId && placeholder) {
-      const iframe = document.createElement('iframe');
-      iframe.src = `https://www.youtube.com/embed/${youtubeId}?rel=0&modestbranding=1`;
-      iframe.title = 'Tráiler oficial — El Día que la Etiqueta Murió';
-      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-      iframe.allowFullscreen = true;
-      iframe.loading = 'lazy';
-      iframe.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:none;';
-      placeholder.style.display = 'none';
-      wrapper.appendChild(iframe);
-    }
-  }
-
-  // CUANDO TENGAS EL VIDEO: descomentar y reemplazar con el ID real:
-  // activateTrailer('dQw4w9WgXcQ');
 </script>
 
 </body>
