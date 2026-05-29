@@ -1,1 +1,958 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Últimos Cupos — El Día que la Etiqueta Murió</title>
+  <meta name="description" content="Última oportunidad para registrarte al estreno de El Día que la Etiqueta Murió. Mira el tráiler oficial y asegura tu cupo antes de que se cierre el acceso.">
+  <meta name="robots" content="index, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
+  <style>
+    :root {
+      --rojo: #C8102E;
+      --rojo-oscuro: #8B0000;
+      --negro: #0a0a0a;
+      --blanco: #f5f0eb;
+      --gris: #1a1a1a;
+      --gris-medio: #888;
+      --gold: #c9a84c;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--negro);
+      color: var(--blanco);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+      cursor: default;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.5;
+    }
+
+    .urgency-strip {
+      background: var(--rojo);
+      padding: 14px 20px;
+      text-align: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(13px, 1.5vw, 16px);
+      letter-spacing: 0.2em;
+      color: white;
+      overflow: hidden;
+    }
+
+    .urgency-strip .ticker {
+      display: inline-flex;
+      gap: 60px;
+      animation: ticker 16s linear infinite;
+      white-space: nowrap;
+    }
+
+    .ticker-sep { color: rgba(255,255,255,0.4); }
+
+    .hero-fomo {
+      position: relative;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 40px 20px;
+      text-align: center;
+    }
+
+    .hero-kicker {
+      font-size: 10px;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--rojo);
+      margin-bottom: 20px;
+      animation: fadeUp 0.55s ease forwards;
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(28px, 4vw, 56px);
+      line-height: 0.92;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--blanco);
+      margin-bottom: 18px;
+      animation: fadeUp 0.65s ease forwards 0.1s;
+      opacity: 0;
+    }
+
+    .hero-title span { color: var(--rojo); }
+
+    .hero-sub {
+      max-width: 46ch;
+      margin: 0 auto 28px;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(14px, 1.4vw, 18px);
+      line-height: 1.55;
+      color: rgba(245,240,235,0.72);
+      animation: fadeUp 0.7s ease forwards 0.18s;
+      opacity: 0;
+    }
+
+    .hero-sub strong { color: var(--blanco); font-style: normal; }
+
+    .hero-alert {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 18px;
+      background: rgba(200,16,46,0.1);
+      border: 1px solid rgba(200,16,46,0.28);
+      color: #ff8d9f;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      animation: fadeUp 0.75s ease forwards 0.26s;
+      opacity: 0;
+    }
+
+    .hero-alert::before {
+      content: '⏳';
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    .video-section {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 40px 56px;
+    }
+
+    .video-shell {
+      position: relative;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+      border: 1px solid rgba(200,16,46,0.18);
+      padding: 18px;
+      overflow: hidden;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.35);
+    }
+
+    .video-shell::before {
+      content: '';
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.28em;
+      color: rgba(245,240,235,0.42);
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-caption {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 28px;
+      align-items: center;
+      padding-top: 22px;
+    }
+
+    .video-caption-copy h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(28px, 4vw, 48px);
+      line-height: 1;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      color: var(--blanco);
+    }
+
+    .video-caption-copy p {
+      font-size: 14px;
+      line-height: 1.8;
+      color: rgba(245,240,235,0.58);
+      max-width: 54ch;
+    }
+
+    .video-caption-copy p strong { color: rgba(245,240,235,0.9); font-weight: 500; }
+
+    .caption-badge {
+      justify-self: end;
+      text-align: right;
+      padding: 18px 20px;
+      border-left: 2px solid var(--rojo);
+      max-width: 320px;
+    }
+
+    .caption-badge-label {
+      font-size: 10px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--rojo);
+      margin-bottom: 8px;
+    }
+
+    .caption-badge-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      line-height: 1.65;
+      color: rgba(245,240,235,0.76);
+      font-style: italic;
+    }
+
+    .countdown-section {
+      background: var(--gris);
+      border-top: 1px solid rgba(200,16,46,0.2);
+      border-bottom: 1px solid rgba(200,16,46,0.2);
+      padding: 52px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .countdown-section::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(ellipse, rgba(200,16,46,0.06) 0%, transparent 72%);
+      pointer-events: none;
+    }
+
+    .countdown-label {
+      font-size: 10px;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--rojo);
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .countdown-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(32px, 5vw, 62px);
+      line-height: 1;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--blanco);
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .countdown-sub {
+      max-width: 54ch;
+      margin: 0 auto 26px;
+      font-size: 14px;
+      line-height: 1.75;
+      color: rgba(245,240,235,0.6);
+      position: relative;
+      z-index: 1;
+    }
+
+    .countdown-sub strong { color: rgba(245,240,235,0.9); font-weight: 500; }
+
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      max-width: 760px;
+      margin: 0 auto 18px;
+      gap: 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      position: relative;
+      z-index: 1;
+    }
+
+    .countdown-item {
+      padding: 26px 12px;
+      border-right: 1px solid rgba(255,255,255,0.06);
+    }
+    .countdown-item:last-child { border-right: 0; }
+
+    .countdown-number {
+      display: block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(44px, 7vw, 90px);
+      line-height: 0.9;
+      color: var(--blanco);
+      letter-spacing: 0.04em;
+      margin-bottom: 10px;
+    }
+
+    .countdown-unit {
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gris-medio);
+    }
+
+
+
+    .form-section {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 72px 40px 80px;
+      text-align: center;
+    }
+
+    .form-eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--rojo);
+      margin-bottom: 16px;
+    }
+
+    .form-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(38px, 5vw, 72px);
+      line-height: 0.98;
+      letter-spacing: 0.04em;
+      color: var(--blanco);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .form-sub {
+      max-width: 50ch;
+      margin: 0 auto 34px;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 16px;
+      line-height: 1.7;
+      color: rgba(245,240,235,0.68);
+    }
+
+    .form-shell {
+      max-width: 760px;
+      margin: 0 auto;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+      border: 1px solid rgba(200,16,46,0.14);
+      padding: 28px;
+    }
+
+    .form-label {
+      display: block;
+      text-align: left;
+      margin-bottom: 10px;
+      font-size: 10px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: rgba(245,240,235,0.58);
+    }
+
+    .form-row {
+      display: flex;
+      width: 100%;
+      border: 1px solid rgba(200,16,46,0.55);
+      background: rgba(0,0,0,0.35);
+    }
+
+    .form-row input {
+      flex: 1;
+      min-width: 0;
+      border: 0;
+      background: transparent;
+      color: var(--blanco);
+      padding: 20px 22px;
+      font-size: 18px;
+      outline: none;
+    }
+
+    .form-row input::placeholder {
+      color: rgba(245,240,235,0.35);
+      font-style: italic;
+    }
+
+    .form-row button {
+      border: 0;
+      background: var(--rojo);
+      color: white;
+      padding: 0 34px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: background 0.25s ease, transform 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .form-row button:hover { background: #e01536; }
+    .form-row button:active { transform: scale(0.98); }
+
+    .form-note {
+      font-size: 11px;
+      color: rgba(245,240,235,0.3);
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      justify-content: center;
+    }
+
+    .form-note::before { content: '🔒'; font-size: 9px; }
+
+    .benefits-section {
+      background: var(--gris);
+      padding: 72px 40px 80px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .benefits-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .benefits-head {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 44px;
+    }
+
+    .benefits-head p:first-child {
+      font-size: 10px;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--rojo);
+      margin-bottom: 16px;
+    }
+
+    .benefits-head h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(34px, 5vw, 64px);
+      line-height: 1;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .benefits-head p:last-child {
+      font-size: 14px;
+      line-height: 1.75;
+      color: rgba(245,240,235,0.58);
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .benefit-card {
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.025);
+      padding: 26px 24px;
+      min-height: 220px;
+    }
+
+    .benefit-tag {
+      font-size: 10px;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--rojo);
+      margin-bottom: 12px;
+    }
+
+    .benefit-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 26px;
+      line-height: 1;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      color: var(--blanco);
+    }
+
+    .benefit-card p {
+      font-size: 13px;
+      line-height: 1.8;
+      color: rgba(245,240,235,0.54);
+    }
+
+    .final-cta {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 76px 40px 90px;
+      text-align: center;
+    }
+
+    .final-cta h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(38px, 6vw, 72px);
+      line-height: 0.98;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .final-cta p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 16px;
+      line-height: 1.7;
+      color: rgba(245,240,235,0.68);
+      margin-bottom: 30px;
+    }
+
+    footer {
+      padding: 40px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.15em;
+      color: var(--gris-medio);
+    }
+
+    .footer-legal {
+      font-size: 11px;
+      color: rgba(245,240,235,0.2);
+    }
+
+    .footer-ficca {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(245,240,235,0.15);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .hero-fomo,
+      .video-section,
+      .form-section,
+      .benefits-section,
+      .final-cta,
+      .countdown-section { padding-left: 24px; padding-right: 24px; }
+
+      .video-caption {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .caption-badge {
+        justify-self: start;
+        text-align: left;
+        max-width: 100%;
+      }
+
+      .countdown-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .countdown-item:nth-child(2) { border-right: 0; }
+      .countdown-item:nth-child(-n+2) { border-bottom: 1px solid rgba(255,255,255,0.06); }
+
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        flex-direction: column;
+        text-align: center;
+        padding: 32px 24px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .form-row { flex-direction: column; }
+      .form-row button { width: 100%; padding: 18px; }
+      .hero-title { font-size: clamp(22px, 8vw, 40px); }
+    }
+  
+
+/* ============ COUNTDOWN ============ */
+  .countdown-section {
+    background: var(--gris);
+    border-top: 1px solid rgba(200,16,46,0.2);
+    border-bottom: 1px solid rgba(200,16,46,0.2);
+    padding: 48px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .countdown-section::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(ellipse, rgba(200,16,46,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .countdown-label {
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--rojo);
+    margin-bottom: 28px;
+    font-weight: 400;
+  }
+
+  .countdown-grid {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .countdown-item {
+    flex: 1;
+    position: relative;
+  }
+
+  .countdown-item:not(:last-child)::after {
+    content: ':';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(50%, -60%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 4vw, 56px);
+    color: var(--rojo);
+    opacity: 0.4;
+  }
+
+  .countdown-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(56px, 7vw, 96px);
+    line-height: 1;
+    color: var(--blanco);
+    display: block;
+    text-shadow: 0 0 40px rgba(200,16,46,0.3);
+  }
+
+  .countdown-unit {
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gris-medio);
+    display: block;
+    margin-top: 4px;
+  }
+
+  .countdown-date {
+    margin-top: 24px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--gris-medio);
+  }
+
+  .countdown-date strong {
+    color: rgb(200, 16, 46);
+    font-style: normal;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    line-height: normal;
+  }
+
+  </style>
+</head>
+<body>
+
+<div class="urgency-strip" role="marquee" aria-label="Aviso de cupos limitados">
+  <span class="ticker">
+    <span>ÚLTIMOS CUPOS DISPONIBLES</span>
+    <span class="ticker-sep">✦</span>
+    <span>ÚLTIMA OPORTUNIDAD DE REGISTRARTE</span>
+    <span class="ticker-sep">✦</span>
+    <span>EL REGISTRO SE CIERRA PRONTO</span>
+    <span class="ticker-sep">✦</span>
+    <span>ESTRENO 8 DE JUNIO</span>
+    <span class="ticker-sep">✦</span>
+    <span>ÚLTIMOS CUPOS DISPONIBLES</span>
+    <span class="ticker-sep">✦</span>
+    <span>ÚLTIMA OPORTUNIDAD DE REGISTRARTE</span>
+    <span class="ticker-sep">✦</span>
+    <span>EL REGISTRO SE CIERRA PRONTO</span>
+    <span class="ticker-sep">✦</span>
+    <span>ESTRENO 8 DE JUNIO</span>
+    <span class="ticker-sep">✦</span>
+  </span>
+</div>
+
+<section class="hero-fomo" aria-labelledby="hero-heading">
+  <p class="hero-kicker">Última llamada</p>
+  <h1 class="hero-title" id="hero-heading">
+    Mira el tráiler:<br>
+    <span>El día que la etiqueta murió.</span><br>
+    Luego será tarde.
+  </h1>
+  <p class="hero-sub">
+    Esta es <strong>la última oportunidad</strong> para asegurar tu silla virtual antes de que se cierre el registro del estreno.
+  </p>
+  <div class="hero-alert">Quedan pocos cupos y el acceso se está cerrando</div>
+</section>
+
+<section class="video-section reveal" aria-labelledby="trailer-heading">
+  <div class="video-shell">
+    <div class="video-wrapper" role="region" aria-label="Tráiler oficial de la miniserie">
+      <iframe
+        src="https://videomng.builderall.com/embed/5cjGT2pwgp/?autoplay=0&countdown=0&controls=1&allowpause=1"
+        allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        title="Tráiler oficial — El Día que la Etiqueta Murió"
+      ></iframe>
+    </div>
+
+    <div class="video-caption">
+      <div class="video-caption-copy">
+        <h2 id="trailer-heading">Asegura tu silla virtual ahora mismo</h2>
+        <p>
+          El estreno será en pocos días y <strong>el acceso no quedará abierto para siempre.</strong> Si sabes que quieres estar ahí, el momento de registrarte es ahora — no después.
+        </p>
+      </div>
+      <div class="caption-badge">
+        <p class="caption-badge-label">Importante</p>
+        <p class="caption-badge-text">Solo las personas registradas recibirán el acceso, las primicias y las instrucciones del estreno.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="countdown-section reveal" aria-label="Contador regresivo al estreno">
+  <p class="countdown-label">El estreno comienza en</p>
+  <div class="countdown-grid" id="countdown" aria-live="polite">
+    <div class="countdown-item">
+      <span class="countdown-number" id="cd-days">00</span>
+      <span class="countdown-unit">Días</span>
+    </div>
+    <div class="countdown-item">
+      <span class="countdown-number" id="cd-hours">00</span>
+      <span class="countdown-unit">Horas</span>
+    </div>
+    <div class="countdown-item">
+      <span class="countdown-number" id="cd-mins">00</span>
+      <span class="countdown-unit">Minutos</span>
+    </div>
+    <div class="countdown-item">
+      <span class="countdown-number" id="cd-secs">00</span>
+      <span class="countdown-unit">Segundos</span>
+    </div>
+  </div>
+  <p class="countdown-date">Estreno oficial <strong>8 DE JUNIO</strong></p>
+</section>
+
+<section class="form-section reveal" aria-labelledby="form-heading">
+  <p class="form-eyebrow">Asegura tu lugar ahora</p>
+  <h2 class="form-title" id="form-heading">Regístrate antes de que se cierre el acceso</h2>
+  <p class="form-sub">Solo deja tu correo y recibirás el acceso al estreno, instrucciones exclusivas y las novedades clave antes de que todo comience.</p>
+
+  <div class="form-shell">
+    <label class="form-label" for="email-hero">Tu correo electrónico</label>
+    <form
+      class="form-row"
+      id="form-hero"
+      action="https://app.mailingboss.com/lists/6a1231d7c1a55/subscribe"
+      method="POST"
+      onsubmit="handleSubmit(event, 'form-hero')"
+    >
+      <input
+        type="email"
+        id="email-hero"
+        name="EMAIL"
+        placeholder="tucorreo@gmail.com"
+        required
+        autocomplete="email"
+        aria-label="Ingresa tu correo electrónico"
+      >
+      <button type="submit" aria-label="Reservar silla virtual">
+        QUIERO MI CUPO
+      </button>
+    </form>
+    <p class="form-note">Tu privacidad es sagrada. Sin spam, nunca.</p>
+  </div>
+</section>
+
+<section class="benefits-section reveal" aria-labelledby="benefits-heading">
+  <div class="benefits-inner">
+    <div class="benefits-head">
+      <p>¿Qué aseguras al registrarte?</p>
+      <h2 id="benefits-heading">Lo que podrías perderte si lo dejas para después</h2>
+      <p>Esta no es una simple lista. Es el acceso a todo lo que rodea el estreno: antes, durante y después.</p>
+    </div>
+
+    <div class="benefits-grid">
+      <article class="benefit-card reveal">
+        <p class="benefit-tag">Acceso</p>
+        <h3>Tu entrada al estreno</h3>
+        <p>Solo las personas registradas recibirán las instrucciones y el enlace para ver la miniserie el día del lanzamiento.</p>
+      </article>
+      <article class="benefit-card reveal">
+        <p class="benefit-tag">Primicias</p>
+        <h3>Contenido anticipado</h3>
+        <p>Antes del estreno compartiremos pistas, novedades y revelaciones que ayudan a entender lo que estás a punto de ver.</p>
+      </article>
+      <article class="benefit-card reveal">
+        <p class="benefit-tag">Exclusivo</p>
+        <h3>Material especial</h3>
+        <p>Habrá material y recursos reservados para las registradas. Si no entras ahora, te quedas fuera de esa experiencia completa.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta reveal" aria-labelledby="final-cta-heading">
+  <h2 id="final-cta-heading">No esperes a que cierren los cupos</h2>
+  <p>Asegura tu silla virtual para el estreno.</p>
+
+  <div class="form-shell">
+    <label class="form-label" for="email-bottom">Tu correo electrónico</label>
+    <form
+      class="form-row"
+      id="form-bottom"
+      action="https://app.mailingboss.com/lists/6a1231d7c1a55/subscribe"
+      method="POST"
+      onsubmit="handleSubmit(event, 'form-bottom')"
+    >
+      <input
+        type="email"
+        id="email-bottom"
+        name="EMAIL"
+        placeholder="tucorreo@gmail.com"
+        required
+        autocomplete="email"
+        aria-label="Ingresa tu correo electrónico para reservar"
+      >
+      <button type="submit">ÚLTIMA OPORTUNIDAD</button>
+    </form>
+    <p class="form-note">Tu privacidad es sagrada. Sin spam, nunca.</p>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-brand">La Etiquette</span>
+  <span class="footer-legal">© 2026 La Etiquette · campuslaetiquette.com</span>
+  <span class="footer-ficca">Producción: Ficca Studio</span>
+</footer>
+
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1277940794276105');
+fbq('track', 'PageView');
+</script>
+
+<script>
+  function updateCountdown() {
+    const target = new Date('2026-06-08T20:00:00-05:00');
+    const now = new Date();
+    const diff = target - now;
+
+    if (diff <= 0) {
+      document.getElementById('cd-days').textContent = '00';
+      document.getElementById('cd-hours').textContent = '00';
+      document.getElementById('cd-mins').textContent = '00';
+      document.getElementById('cd-secs').textContent = '00';
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById('cd-days').textContent = String(days).padStart(2,'0');
+    document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
+    document.getElementById('cd-mins').textContent = String(minutes).padStart(2,'0');
+    document.getElementById('cd-secs').textContent = String(seconds).padStart(2,'0');
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  function handleSubmit(e, formId) {
+    const form = document.getElementById(formId);
+    const btn  = form.querySelector('button');
+    btn.textContent = 'RESERVANDO...';
+    btn.disabled = true;
+    btn.style.opacity = '0.8';
+  }
+</script>
+
+
+</body>
+</html>
