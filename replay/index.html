@@ -1,1 +1,733 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estreno | EL DÍA QUE LA ETIQUETA MURIÓ | Miniserie Completa</title>
+<meta name="description" content="Ya puedes ver los episodios 1 y 2 de El Día que la Etiqueta Murió. Descubre la clase inmersiva y la revolución del saber estar.">
 
+<!-- No indexar -->
+<meta name="robots" content="noindex, nofollow">
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1251616755300595');
+fbq('track', 'PageView');
+fbq('trackCustom', 'replayestreno');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1251616755300595&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --rojo: #C8102E;
+    --rojo-oscuro: #8B0000;
+    --negro: #0a0a0a;
+    --blanco: #f5f0eb;
+    --gris: #111111;
+    --gris-medio: #888;
+    --bronze: #C59B6D; /* El tono de la nueva era de ALDEA */
+    --aldea-dark: #1E1410; /* El color chocolate profundo para la transición */
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--negro);
+    color: var(--blanco);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  /* GRAIN TEXTURE */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  /* ============ TICKER STRIP ============ */
+  .ticker-strip {
+    background: var(--rojo);
+    padding: 13px 20px;
+    text-align: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(12px, 1.4vw, 15px);
+    letter-spacing: 0.22em;
+    color: white;
+    overflow: hidden;
+  }
+
+  .ticker-strip .ticker {
+    display: inline-flex;
+    gap: 60px;
+    animation: ticker 25s linear infinite;
+    white-space: nowrap;
+  }
+
+  .ticker-sep { color: rgba(255,255,255,0.4); }
+
+  /* ============ HERO ============ */
+  .hero {
+    position: relative;
+    padding: 80px 40px 50px;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(200,16,46,0.3), transparent);
+  }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: var(--rojo);
+    margin-bottom: 22px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    animation: fadeUp 0.6s ease forwards;
+    opacity: 0;
+  }
+
+  .hero-eyebrow::before,
+  .hero-eyebrow::after {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--rojo);
+    display: block;
+    opacity: 0.5;
+  }
+
+  .hero-ep-tag {
+    display: inline-block;
+    border: 1px solid rgba(200,16,46,0.4);
+    padding: 5px 14px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.28em;
+    color: rgba(200,16,46,0.8);
+    margin-bottom: 28px;
+    animation: fadeUp 0.65s ease forwards 0.1s;
+    opacity: 0;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(42px, 7vw, 90px);
+    line-height: 0.88;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--blanco);
+    margin-bottom: 10px;
+    animation: fadeUp 0.7s ease forwards 0.2s;
+    opacity: 0;
+  }
+
+  .hero-title .ep-number {
+    display: block;
+    font-size: clamp(20px, 3vw, 36px);
+    color: var(--rojo);
+    letter-spacing: 0.18em;
+    margin-bottom: 6px;
+  }
+
+  .hero-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(15px, 2vw, 22px);
+    color: rgba(245,240,235,0.62);
+    line-height: 1.55;
+    max-width: 58ch;
+    margin: 20px auto 0;
+    animation: fadeUp 0.7s ease forwards 0.35s;
+    opacity: 0;
+  }
+
+  /* ============ VIDEO SECTION (STACKED) ============ */
+  .video-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 40px 60px;
+  }
+
+  .video-shell {
+    position: relative;
+    border: 1px solid rgba(200,16,46,0.2);
+    padding: 16px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.025) 0%, rgba(255,255,255,0.008) 100%);
+    box-shadow: 0 32px 100px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04);
+    margin-bottom: 60px; /* Separación entre episodios */
+  }
+
+  .video-shell:last-child {
+    margin-bottom: 0;
+  }
+
+  .video-shell::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(200,16,46,0.6), transparent);
+  }
+
+  /* Variación dorada/bronce para el Episodio 2 (Lanzamiento de ALDEA) */
+  .video-shell-aldea {
+    border-color: rgba(197, 155, 109, 0.25);
+    background: linear-gradient(180deg, rgba(197, 155, 109, 0.04) 0%, rgba(197, 155, 109, 0.008) 100%);
+  }
+
+  .video-shell-aldea::before {
+    background: linear-gradient(90deg, transparent, rgba(197, 155, 109, 0.7), transparent);
+  }
+
+  .video-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    overflow: hidden;
+  }
+
+  .video-wrapper iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .video-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 20px;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .video-meta-left h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(22px, 3vw, 38px);
+    line-height: 1;
+    letter-spacing: 0.04em;
+    color: var(--blanco);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  .video-meta-left p {
+    font-size: 13px;
+    line-height: 1.8;
+    color: rgba(245,240,235,0.52);
+    max-width: 56ch;
+  }
+
+  .video-meta-left p strong {
+    color: rgba(245,240,235,0.85);
+    font-weight: 500;
+  }
+
+  .video-duration {
+    flex-shrink: 0;
+    text-align: right;
+    border-left: 2px solid rgba(200,16,46,0.3);
+    padding-left: 20px;
+  }
+
+  .video-duration-aldea {
+    border-left-color: rgba(197, 155, 109, 0.4);
+  }
+
+  .video-duration-label {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--rojo);
+    margin-bottom: 6px;
+  }
+
+  .video-duration-label-aldea {
+    color: var(--bronze);
+  }
+
+  .video-duration-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: rgba(245,240,235,0.58);
+    line-height: 1.5;
+  }
+
+  /* ============ ALDEA TRANSITION SECTION ============ */
+  .aldea-section {
+    background-color: var(--aldea-dark);
+    border-top: 1px solid rgba(197, 155, 109, 0.2);
+    border-bottom: 1px solid rgba(197, 155, 109, 0.2);
+    padding: 80px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Resplandor atmosférico detrás */
+  .aldea-section::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(ellipse, rgba(197, 155, 109, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .aldea-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 18px;
+    position: relative;
+    z-index: 1;
+    font-weight: 500;
+  }
+
+  .aldea-heading {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(38px, 6vw, 82px);
+    line-height: 0.9;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--blanco);
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .aldea-heading span {
+    color: var(--bronze);
+    display: block;
+    font-family: 'Playfair Display', serif;
+    text-transform: none;
+    font-style: italic;
+    font-size: 0.55em;
+    letter-spacing: 0;
+    margin-top: 8px;
+  }
+
+  .aldea-desc {
+    max-width: 58ch;
+    margin: 0 auto 36px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: rgba(245,240,235,0.65);
+    position: relative;
+    z-index: 1;
+  }
+
+  .aldea-desc strong {
+    color: #fff;
+    font-weight: 500;
+  }
+
+  /* BOTÓN DE TRANSICIÓN ALDEA */
+  .aldea-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background-color: var(--bronze);
+    color: #1a100a;
+    text-decoration: none;
+    padding: 18px 44px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 19px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    border-radius: 4px;
+    transition: background-color 0.25s, transform 0.15s, box-shadow 0.25s;
+    animation: pulseBronze 3s ease infinite;
+    position: relative;
+    z-index: 1;
+  }
+
+  .aldea-btn:hover {
+    background-color: #dfb285;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 35px rgba(197, 155, 109, 0.35);
+  }
+
+  .aldea-btn:active {
+    transform: translateY(0);
+  }
+
+  .aldea-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: #1a100a;
+    transition: transform 0.2s ease;
+  }
+
+  .aldea-btn:hover svg {
+    transform: translateX(4px);
+  }
+
+  .aldea-tags {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 36px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+
+  .aldea-tag {
+    border: 1px solid rgba(197, 155, 109, 0.3);
+    padding: 6px 16px;
+    font-size: 10px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    border-radius: 2px;
+  }
+
+  /* ============ QUOTE CLOSER ============ */
+  .quote-closer {
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 88px 40px 96px;
+    text-align: center;
+  }
+
+  .quote-closer blockquote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(18px, 2.6vw, 28px);
+    line-height: 1.55;
+    color: rgba(245,240,235,0.72);
+    margin-bottom: 36px;
+  }
+
+  .quote-closer blockquote strong {
+    color: var(--blanco);
+    font-style: normal;
+  }
+
+  .quote-closer blockquote em.red {
+    color: var(--rojo);
+    font-style: italic;
+  }
+
+  .quote-closer blockquote em.bronze {
+    color: var(--bronze);
+    font-style: italic;
+  }
+
+  .closer-sig {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--rojo);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  .closer-sig::before,
+  .closer-sig::after {
+    content: '';
+    width: 22px;
+    height: 1px;
+    background: var(--rojo);
+    display: block;
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    padding: 36px 40px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.15em;
+    color: var(--gris-medio);
+  }
+
+  .footer-legal {
+    font-size: 11px;
+    color: rgba(245,240,235,0.2);
+  }
+
+  .footer-ep {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(245,240,235,0.15);
+  }
+
+  /* ============ ANIMATIONS ============ */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  @keyframes pulseBronze {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(197, 155, 109, 0.35); }
+    50%       { box-shadow: 0 0 0 10px rgba(197, 155, 109, 0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 900px) {
+    .hero { padding: 64px 24px 48px; }
+    .video-section { padding: 30px 24px 48px; }
+    .aldea-section { padding: 60px 24px; }
+    .quote-closer { padding: 72px 24px 80px; }
+    footer { flex-direction: column; text-align: center; padding: 28px 24px; }
+
+    .video-meta {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .video-duration {
+      border-left: none;
+      border-top: 1px solid rgba(200,16,46,0.2);
+      padding-left: 0;
+      padding-top: 16px;
+      text-align: left;
+    }
+
+    .video-duration-aldea {
+      border-top-color: rgba(197, 155, 109, 0.2);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .ticker-strip { font-size: 11px; }
+    .aldea-btn { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ TICKER STRIP ============ -->
+<div class="ticker-strip" role="marquee" aria-label="Lanzamiento oficial de ALDEA">
+  <span class="ticker">
+    <span>EPISODIOS 1 Y 2 YA DISPONIBLES</span>
+    <span class="ticker-sep">✦</span>
+    <span>LA NUEVA ERA ETIQUETUNA HA COMENZADO</span>
+    <span class="ticker-sep">✦</span>
+    <span>CLASE INMERSIVA INCLUIDA</span>
+    <span class="ticker-sep">✦</span>
+    <span>BIENVENIDA A ALDEA</span>
+    <span class="ticker-sep">✦</span>
+    <span>EPISODIOS 1 Y 2 YA DISPONIBLES</span>
+    <span class="ticker-sep">✦</span>
+    <span>LA NUEVA ERA ETIQUETUNA HA COMENZADO</span>
+    <span class="ticker-sep">✦</span>
+    <span>CLASE INMERSIVA INCLUIDA</span>
+    <span class="ticker-sep">✦</span>
+    <span>BIENVENIDA A ALDEA</span>
+    <span class="ticker-sep">✦</span>
+  </span>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" aria-labelledby="hero-heading">
+  <p class="hero-eyebrow">Miniserie completa · Replay oficial</p>
+  <p class="hero-ep-tag">Episodios 1 y 2</p>
+  <h1 class="hero-title" id="hero-heading">
+    <span class="ep-number">El Día que la Etiqueta Murió</span>
+    La Miniserie Completa
+  </h1>
+  <p class="hero-subtitle">
+    Cuando el saber estar dejó de importar... todo lo demás también. Ve los dos episodios y descubre la revolución del saber estar.
+  </p>
+</section>
+
+<!-- ============ VIDEO SECTION ============ -->
+<section class="video-section reveal" aria-label="Visualización de la miniserie">
+  
+  <!-- EPISODIO 1 -->
+  <div class="video-shell">
+    <div class="video-wrapper" role="region" aria-label="Episodio 1 de la miniserie">
+      <iframe
+        src="https://videomng.builderall.com/embed/X5n6q4qr2x/?autoplay=0&countdown=0&controls=1&allowpause=1"
+        allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        title="Episodio 1 — El Día que la Etiqueta Murió"
+      ></iframe>
+    </div>
+
+    <div class="video-meta">
+      <div class="video-meta-left">
+        <h2>Episodio 1 — El día que la etiqueta murió</h2>
+        <p>
+          El origen de la historia. El momento exacto donde el saber estar dejó de ser relevante... y cómo eso impactó silenciosamente en nuestra presencia y reputación en el mundo.
+        </p>
+      </div>
+      <div class="video-duration">
+        <p class="video-duration-label">Siguiente paso</p>
+        <p class="video-duration-text">
+          Episodio 2 (Final)
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EPISODIO 2 -->
+  <div class="video-shell video-shell-aldea">
+    <div class="video-wrapper" role="region" aria-label="Episodio 2 de la miniserie">
+      <iframe 
+        src="https://videomng.builderall.com/embed/fSxthWplFe/?controls=1&allowpause=1" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen
+        title="Episodio 2 — El desenlace + Clase Inmersiva"
+      ></iframe>
+    </div>
+
+    <div class="video-meta">
+      <div class="video-meta-left">
+        <h2>Episodio 2 — El desenlace + Clase Inmersiva</h2>
+        <p>
+          El desenlace definitivo de la historia seguido por la clase inmersiva en vivo, donde MariaPau revela el por qué detrás de todo y abre oficialmente las puertas al nuevo universo.
+        </p>
+      </div>
+      <div class="video-duration video-duration-aldea">
+        <p class="video-duration-label video-duration-label-aldea">La Revolución</p>
+        <p class="video-duration-text">
+          Bienvenida a ALDEA
+        </p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ============ ALDEA LANZAMIENTO SECTION ============ -->
+<section class="aldea-section reveal" aria-labelledby="aldea-heading">
+  <p class="aldea-eyebrow">La Nueva Era Etiquetuna ha comenzado</p>
+
+  <h2 class="aldea-heading" id="aldea-heading">
+    Bienvenida a ALDEA
+    <span>Donde habita El Arte de Saber Estar</span>
+  </h2>
+
+  <p class="aldea-desc">
+    La etiqueta no murió, se transformó. A partir de hoy, la presencia, el criterio y la reputación tienen una nueva casa digital. Un espacio creado para que te muevas por el mundo con asertividad, elegancia y consideración.
+  </p>
+
+  <a
+    href="https://fundadoras.aldealaetiquette.com/"
+    class="aldea-btn"
+    aria-label="Conocer el nuevo universo de ALDEA"
+  >
+    CONOCER LA NUEVA ERA ETIQUETUNA
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M5 12h14M12 5l7 7-7 7" stroke="#1a100a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+
+  <div class="aldea-tags">
+    <span class="aldea-tag">Saber Ser</span>
+    <span class="aldea-tag">Saber Hablar</span>
+    <span class="aldea-tag">Saber Estar</span>
+  </div>
+</section>
+
+<!-- ============ QUOTE CLOSER ============ -->
+<section class="quote-closer reveal" aria-label="Mensaje final de MariaPau">
+  <blockquote>
+    "El episodio 1 te mostró lo que murió.<br>
+    El episodio 2 te mostró qué nació en su lugar.<br>
+    La revolución de La Etiquette ha comenzado.<br>
+    <em class="bronze">Bienvenida a ALDEA.</em>"
+  </blockquote>
+  <p class="closer-sig">MariaPau</p>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <span class="footer-brand">La Etiquette</span>
+  <span class="footer-legal">© 2026 La Etiquette · campuslaetiquette.com</span>
+  <span class="footer-ep">Miniserie Completa · Replay oficial</span>
+</footer>
+
+<!-- ============ SCRIPTS ============ -->
+<script>
+  /* --- Scroll reveal --- */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
